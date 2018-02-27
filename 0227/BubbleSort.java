@@ -46,17 +46,28 @@ public class BubbleSort {
 	}
 
 	public void bubbleSort(int[] data) {
-	 
-		int length = data.length - 1;
+		
+		
+		//變數名稱錯誤
+		int length = data.length;
 		int temp = 0;
-		for (int path = 0; path < length; path++) {
-			for (int i = 0; i < length - path; i++) {
+		
+		//這裡應該表示回合(使用Refactor->Rename的功能)
+		for (int round = 0; round < length-1; round++) {
+			for (int i = 0; i < length - round-1; i++) {
 				if (data[i] > data[i + 1]) {
-					temp = data[i]; 
-                    data[i] = data[i+1];
-                    data[i+1] = temp;
+					swap(data,i,i+1);
 				}
 			}
 		}
 	}
+	//把swap抽出來
+	public static void swap(int[] data, int a, int b) {  
+	      int temp = data[a];  
+	      data[a] = data[b];  
+	      data[b] = temp;  
+	}  
+	
+	
+	
 }
